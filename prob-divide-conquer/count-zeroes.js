@@ -15,16 +15,36 @@
 //   }
 //   return count;
 // }
+// function countZeroes(arr) {
+//   let newArr = arr.sort();
+//   let count = 0;
+//   for (num of newArr) {
+//     if (num === 0) {
+//       count++;
+//     } else {
+//       return count;
+//     }
+//   }
+//   return count;
+// }
 function countZeroes(arr) {
-  let newArr = arr.sort();
-  let count = 0;
-  for (num of newArr) {
-    if (num === 0) {
-      count++;
+  let leftIDX = 0;
+
+  let rightIDX = arr.length - 1;
+  while (leftIDX <= rightIDX) {
+    let midIDX = Math.floor((rightIDX + leftIDX) / 2);
+    let midVal = arr[midIDX];
+
+    if (leftIDX === rightIDX && arr[midIDX] == 1) {
+      return 0;
+    } else if (midVal > 0) {
+      leftIDX = midIDX + 1;
+    } else if (midVal === 0 && leftIDX !== rightIDX) {
+      rightIDX = midIDX;
     } else {
-      return count;
+      return arr.length - midIDX;
     }
   }
-  return count;
 }
+
 module.exports = countZeroes;
