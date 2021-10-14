@@ -24,6 +24,7 @@ class Stack {
     if (this.first) {
       let oldFirst = this.first;
       this.first = newNode;
+      // old first value goes behind new first
       this.first.next = oldFirst;
     } else {
       this.first = newNode;
